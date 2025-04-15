@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Performance</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h2>Employee Performance Chart</h2>
+    <canvas id="performanceChart" width="400" height="200"></canvas>
+
+    <script>
+        // Fetch data from the API
+        fetch('/api/performance-summary/')
+            .then(res => res.json())
+            .then(data => {
+                const ctx = document.getElementById('performanceChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: data.labels,
+                        datasets: [{
+                            label: 'Performance Score',
+                            data: data.performance_scores,
+                            backgroundColor: 'rgba(54, 162, 235, 0.6)'
+                        }]
+                    }
+                });
+            });
+    </script>
+</body>
+</html>
