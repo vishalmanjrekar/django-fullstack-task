@@ -141,11 +141,3 @@ Basic visualizations can be added via:
 See `design_decisions.md` for architecture breakdown, model rationale, and tech decisions.
 
 ---
-
-## 📄 License
-MIT License
-
----
-
-## 👨‍💻 Author
-Made with ❤️ for the k/RestApis 3-hour coding challenge.
