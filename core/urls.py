@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from core.views import EmployeeViewSet
+from core.views import EmployeeViewSet, DepartmentViewSet, AttendanceViewSet, PerformanceViewSet
 
 # Swagger Imports
 from rest_framework import permissions
@@ -10,7 +10,10 @@ from drf_yasg import openapi
 
 # DRF Router
 router = DefaultRouter()
-router.register(r'employees', EmployeeViewSet)
+router.register(r'employees', EmployeeViewSet, basename='employee')
+router.register(r'departments', DepartmentViewSet, basename='departments')
+router.register(r'attendance', AttendanceViewSet, basename='attendance')
+router.register(r'performance', PerformanceViewSet, basename='performance')
 
 # Swagger Schema View
 schema_view = get_schema_view(
@@ -26,6 +29,7 @@ schema_view = get_schema_view(
     permission_classes=[permissions.AllowAny],
 )
 
+# URL Patterns
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
